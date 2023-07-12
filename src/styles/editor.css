@@ -13,6 +13,14 @@
   border-color: theme('colors.border');
 }
 
+.dark .ce-popover-item__title {
+  color: white 
+}
+
+.dark :hover.ce-popover-item .ce-popover-item__title {
+  color: var(--color-text-primary)
+}
+
 .dark .ce-inline-tool,
 .dark .ce-conversion-toolbar__label,
 .dark .ce-toolbox__button,
@@ -58,8 +66,13 @@
 .dark .cdx-notify__cross::after,
 .dark .cdx-notify__cross::before {
   background: white;
-}
+} 
 
 .codex-editor__redactor {
   padding-bottom: 0 !important;
+}
+
+
+.dark .ce-paragraph[data-placeholder]:empty::before {
+    color: #9ca3af !important;
 }

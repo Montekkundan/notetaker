@@ -4,7 +4,7 @@ import EditorJS from '@editorjs/editorjs'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { usePathname, useRouter } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, useWatch  } from 'react-hook-form'
 import TextareaAutosize from 'react-textarea-autosize'
 import { z } from 'zod'
 
@@ -23,6 +23,7 @@ export const Editor: React.FC = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(PostValidator),
@@ -31,6 +32,14 @@ export const Editor: React.FC = () => {
       content: null,
     },
   })
+  const title = useWatch({
+    control,
+    name: 'title',
+    defaultValue: '', // default value
+  })
+  useEffect(() => {
+    document.title = title || "Notetaker"; 
+  }, [title]);
   const ref = useRef<EditorJS>()
   const _titleRef = useRef<HTMLTextAreaElement>(null)
   const router = useRouter()
@@ -87,7 +96,7 @@ export const Editor: React.FC = () => {
         onReady() {
           ref.current = editor
         },
-        placeholder: 'Type here to write your post...',
+        placeholder: 'Your best ides here...',
         inlineToolbar: true,
         data: { blocks: [] },
         tools: {
@@ -205,12 +214,12 @@ export const Editor: React.FC = () => {
   const { ref: titleRef, ...rest } = register('title')
 
   return (
-    <div className='w-full p-4 bg-zinc-50 rounded-lg border border-zinc-200'>
+    <div className='w-full p-4 bg-zinc-50 dark:bg-zinc-500 rounded-lg border border-zinc-200'>
       <form
         id='note-post-form'
         className='w-fit flex justify-center mx-auto'
         onSubmit={handleSubmit(onSubmit)}>
-        <div className='prose prose-stone dark:prose-invert'>
+        <div className='prose prose-stone dark:prose-invert dark:text-white'>
           <TextareaAutosize
             ref={(e) => {
               titleRef(e)
@@ -218,11 +227,11 @@ export const Editor: React.FC = () => {
               _titleRef.current = e
             }}
             {...rest}
-            placeholder='Title'
+            placeholder='Title here...'
             className='w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none'
           />
           <div id='editor' className='min-h-[500px]' />
-          <p className='text-sm text-gray-500'>
+          <p className='text-sm text-gray-500 dark:text-[#9ca3af]'>
             Use{' '}
             <kbd className='rounded-md border bg-muted px-1 text-xs uppercase'>
               Tab

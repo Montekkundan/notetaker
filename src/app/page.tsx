@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/Button";
 export default function Home() {
   return <div>
     <Editor/>
-    <div className='w-full flex justify-end'>
+    <div className='w-full flex justify-end pt-5'>
         <Button type='submit' className='w-full' form='note-post-form'>
           Save
         </Button>

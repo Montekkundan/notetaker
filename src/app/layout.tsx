@@ -10,7 +10,6 @@ import Providers from '@/components/Providers'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Notetaker',
   description: 'create notes!',
 }
 
@@ -28,7 +27,7 @@ export default function RootLayout({
         'bg-white text-slate-900 dark:text-slate-100 antialiased light',
         inter.className
       )}>
-      <body className='min-h-screen pt-12 bg-slate-50 dark:bg-slate-900 antialiased'>
+      <body className='min-h-screen pt-12 bg-slate-50 dark:bg-zinc-900 antialiased'>
         <Providers>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         {/* @ts-expect-error Server Component */}
