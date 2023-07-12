@@ -16,7 +16,13 @@
 .dark .ce-popover-item__title {
   color: white 
 }
+.dark .link-tool__title  {
+  color: black;
+}
 
+.dark .link-tool__description {
+  color: black;
+}
 .dark :hover.ce-popover-item .ce-popover-item__title {
   color: var(--color-text-primary)
 }

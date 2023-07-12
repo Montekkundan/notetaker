@@ -58,7 +58,7 @@ export const Editor: React.FC = () => {
     onError: () => {
       return toast({
         title: 'Something went wrong.',
-        description: 'Your post was not published. Please try again.',
+        description: 'Your note was not published. Please try again.',
         variant: 'destructive',
       })
     },
@@ -70,7 +70,7 @@ export const Editor: React.FC = () => {
       router.refresh()
 
       return toast({
-        description: 'Your post has been published.',
+        description: 'Your note has been published.',
       })
     },
   })
